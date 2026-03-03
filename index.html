@@ -76,9 +76,47 @@
         <script src="js/__start__.js"></script>
         <script src="js/__loading__.js"></script>
     </div>
+    <div id="customGameOver" style="
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    font-size:48px;
+    font-weight:bold;
+    color:white;
+    background:rgba(0,0,0,0.7);
+    padding:20px 40px;
+    border-radius:15px;
+    display:none;
+    z-index:9999;
+    text-align:center;
+    ">
+    Lam tot lam cac chi em
+    </div>
     <script src="js/app.js"></script>
 
+    <script>
+    setInterval(function(){
+
+        var canvas = document.getElementById("application-canvas");
+
+        if(!canvas) return;
+
+        // Nếu game đang hiển thị nút replay (PlayCanvas thường thêm element DOM)
+        var replayBtn = document.querySelector("button");
+
+        // Cách nhận biết đơn giản:
+        // Khi game over, canvas thường không nhận click nữa
+        if(canvas.style.cursor === "default"){
+            document.getElementById("customGameOver").style.display = "block";
+        }
+
+    }, 300);
 
 
-
+    // Ẩn khi click restart
+    document.addEventListener("click", function(){
+        document.getElementById("customGameOver").style.display = "none";
+    });
+    </script>
 </body></html>
